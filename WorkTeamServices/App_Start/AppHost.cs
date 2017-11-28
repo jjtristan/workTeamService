@@ -19,8 +19,12 @@ namespace WorkTeamServices
 
             public override void Configure(Funq.Container container)
             {
-                //register any dependencies your services use, e.g:
-                //container.Register<ICacheClient>(new MemoryCacheClient());
+                //Register user-defined REST-ful urls. You can access the service at the url similar to the following.
+                //http://localhost/ServiceStack.Hello/servicestack/hello or http://localhost/ServiceStack.Hello/servicestack/hello/John%20Doe
+                //You can change /servicestack/ to a custom path in the web.config.
+                Routes
+                  .Add<Hello>("/hello")
+                  .Add<Hello>("/hello/{Name}");
             }
         }
 
